@@ -1,13 +1,9 @@
 @extends('layouts.admin')
 
 @section('content')
-    <h1>I miei progetti</h1>
+    <h1 class="my-3">I miei progetti</h1>
 
-    @if (session('message'))
-        <div class="alert alert-success">
-            {{ session('message') }}
-        </div>
-    @endif
+    @include('admin.partials.error')
 
     <table class="table">
         <thead>

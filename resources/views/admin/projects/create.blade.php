@@ -1,18 +1,9 @@
 @extends('layouts.admin')
 
 @section('content')
+    @include('admin.partials.error')
 
-    @if ($errors->any())
-        <ul class="alert alert-danger">
-            @foreach ($errors->all() as $error)
-                <li>
-                    {{ $error }}
-                </li>
-            @endforeach
-        </ul>
-    @endif
-
-    <h1>Crea un nuovo progetto</h1>
+    <h1 class="my-3">Crea un nuovo progetto</h1>
     <form action="{{ route('admin.projects.store') }}" method="POST">
         @csrf
         <div class="mb-3">
