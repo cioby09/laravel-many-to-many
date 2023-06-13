@@ -6,6 +6,7 @@ use App\Models\Project;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreProjectRequest;
+use App\Http\Requests\UpdateProjectRequest;
 use Illuminate\Support\Str;
 
 class ProjectController extends Controller
@@ -64,7 +65,7 @@ class ProjectController extends Controller
      */
     public function edit(Project $project)
     {
-        //
+        return view('admin.projects.edit', compact('project'));
     }
 
     /**
@@ -74,9 +75,12 @@ class ProjectController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Project $project)
+    public function update(UpdateProjectRequest $request, Project $project)
     {
-        //
+        $data = $request->all();
+        $data['slug'] = Str::slug($data['title']);
+        $project->update($data);
+        return redirect()->route('admin.projects.index')->with('message', "{$project->title} è stato modificato");
     }
 
     /**
@@ -87,6 +91,7 @@ class ProjectController extends Controller
      */
     public function destroy(Project $project)
     {
-        //
+        $project->delete();
+        return redirect()->route('admin.projects.index')->with('message', "{$project->title} è stato eliminato");
     }
 }
