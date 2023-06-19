@@ -30,6 +30,6 @@
             <label for="content" class="form-label">Contenuto</label>
             <textarea class="form-control" id="content" rows="3" name="content">{{ old('content', $project->content) }}</textarea>
         </div>
-        <button class="btn btn-primary" type="submit">Crea</button>
+        <button class="btn btn-primary" type="submit">Modifica</button>
     </form>
 @endsection
