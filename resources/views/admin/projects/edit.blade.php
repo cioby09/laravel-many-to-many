@@ -25,7 +25,9 @@
 
             @foreach ($technologies as $technology)
                 <input type="checkbox" class="btn-check" id="{{ $technology->name }}" autocomplete="off"
-                    name="technology_id[]" value="{{ $technology->id }}" @checked($project->technologies->contains($technology))>
+                    name="technology_id[]" value="{{ $technology->id }}" @checked(old('technology_id')
+                            ? in_array($technlogy->id, old('technology_id', []))
+                            : $project->technologies->contains($technology))>
                 <label class="btn btn-outline-primary" for="{{ $technology->name }}"> {{ $technology->name }}</label>
             @endforeach
 

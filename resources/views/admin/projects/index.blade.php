@@ -28,7 +28,6 @@
                         @empty
                             <span>Nessuna tecnologia usata</span>
                         @endforelse
-
                     </td>
                     <td>{{ $project->slug }}</td>
                     <td>
